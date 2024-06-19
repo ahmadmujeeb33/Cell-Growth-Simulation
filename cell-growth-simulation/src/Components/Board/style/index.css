@@ -1,0 +1,36 @@
+
+
+td {
+    border: 1px solid white;
+}
+
+.board-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+    min-height: 100vh;
+}
+
+.cell {
+    width: 25px;
+    height: 25px;
+}
+
+
+.my-table {
+    width: 50%;
+    border-collapse: collapse;
+   
+
+}
+
+
+@media screen and (max-width: 998px) {
+    .cell {
+        width: 10px;
+        height: 10px;
+    }
+  
+   
+  }
