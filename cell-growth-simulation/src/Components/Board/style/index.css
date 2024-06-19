@@ -15,10 +15,11 @@ td {
 .cell {
     width: 30px;
     height: 30px;
+    cursor: pointer;
     
 }
 
-.nothing {
+.icon-container {
     display: flex;
     justify-content: center;
 }
@@ -85,7 +86,7 @@ td {
     }
   
     .icon {
-        font-size: 5px !important;
+        font-size: 10px !important;
     
     }
    
