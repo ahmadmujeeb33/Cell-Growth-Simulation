@@ -1,4 +1,5 @@
 import React from 'react';
+import { FaBacterium } from "react-icons/fa6";
 
 import './style/index.css';
 
@@ -13,7 +14,13 @@ export const Board = () => {
         return Array.from({ length: size }).map((_, rowIndex) => (
           <tr key={rowIndex} >
             {Array.from({ length: size }).map((_, colIndex) => (
-              <td className="cell" key={colIndex}></td>
+               
+                <td className="cell" key={colIndex}>
+                    <div className="nothing">
+                        <FaBacterium className="icon" />
+                    </div>
+                </td>
+
             ))}
           </tr>
         ));

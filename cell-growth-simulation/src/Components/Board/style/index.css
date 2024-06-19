@@ -13,8 +13,14 @@ td {
 }
 
 .cell {
-    width: 20px;
-    height: 20px;
+    width: 30px;
+    height: 30px;
+    
+}
+
+.nothing {
+    display: flex;
+    justify-content: center;
 }
 
 
@@ -25,31 +31,62 @@ td {
 
 }
 
+.icon {
+    color: thistle;
+    font-size: 15px;
 
-@media screen and (max-width: 1398px) {
+}
+
+
+@media screen and (max-width: 1542px) {
+    .cell {
+        width: 25px;
+        height: 25px;
+
+    }
+  
+   
+  } 
+
+
+  @media screen and (max-width: 542px) {
+  
+
+    .icon {
+        font-size: 5px;
+    
+    }
+  
+   
+  } 
+
+/* @media screen and (max-height: 298px) {
     .cell {
         width: 10px;
         height: 10px;
+
+    }
+
+    .icon {
+        font-size: 10px;
+    
     }
   
+  
    
-  }
+} */
 
-@media screen and (max-height: 598px) {
+
+@media screen and (max-height: 648px) {
     .cell {
-        width: 15px;
-        height: 15px;
+        width: 15px !important;
+        height: 15px !important;
+
     }
   
-   
-}
-
-
-@media screen and (max-height: 398px) {
-    .cell {
-        width: 5px;
-        height: 5px;
+    .icon {
+        font-size: 5px !important;
+    
     }
-  
    
-}
+} 
