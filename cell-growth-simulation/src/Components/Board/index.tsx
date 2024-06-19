@@ -21,11 +21,11 @@ export const Board = () => {
 
     return (
         <div className="board-container">
-            <table className="my-table">
-                <tbody>
-                   {createGrid()}
-                </tbody>
-            </table>
+                <table className="my-table">
+                    <tbody>
+                    {createGrid()}
+                    </tbody>
+                </table>
         </div>
     )
 

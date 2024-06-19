@@ -13,8 +13,8 @@ td {
 }
 
 .cell {
-    width: 25px;
-    height: 25px;
+    width: 20px;
+    height: 20px;
 }
 
 
@@ -26,7 +26,7 @@ td {
 }
 
 
-@media screen and (max-width: 998px) {
+@media screen and (max-width: 1398px) {
     .cell {
         width: 10px;
         height: 10px;
@@ -34,3 +34,22 @@ td {
   
    
   }
+
+@media screen and (max-height: 598px) {
+    .cell {
+        width: 15px;
+        height: 15px;
+    }
+  
+   
+}
+
+
+@media screen and (max-height: 398px) {
+    .cell {
+        width: 5px;
+        height: 5px;
+    }
+  
+   
+}
