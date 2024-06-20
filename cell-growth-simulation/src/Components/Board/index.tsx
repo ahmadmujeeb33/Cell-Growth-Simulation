@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useRef, useState, useMemo } from 'react';
 import { FaBacterium } from "react-icons/fa6";
 import { useColonySpread } from './hooks/useColonySpread';
 import { Cell } from '../Cell';
@@ -21,19 +21,48 @@ export const Board: React.FC<Board> = ({spreading}) => {
 
     const size: number = 20;
 
-    const grid = createInitalGrid(size)
+    const [grid, setGrid] = useState(()=> createInitalGrid(size))
 
-    // useColonySpread(spreading, grid);
+    const [changedCells, setChangedCells] = useState<string[]>([]);
+
+
+    
+    useColonySpread(spreading, grid, setGrid, setChangedCells);
+
+
+    console.log("grid", grid)
+    console.log("changedCells", changedCells)
+
+
+    const updateGrid = (rowIndex:number, colIndex:number) => {
+
+        // grid.current =  grid.current.map((row, rIdx) => 
+        //     row.map((cell, cIdx) => (rIdx === rowIndex && cIdx === colIndex ? !cell : cell))
+        // )
+
+
+        setGrid(prevGrid => 
+            prevGrid.map((row, rIdx) => 
+              row.map((cell, cIdx) => (rIdx === rowIndex && cIdx === colIndex ? !cell : cell))
+            )
+        );
+    }
 
 
     return (
         <div className="board-container">
             <table className="my-table">
                 <tbody>
-                    {grid.map((row, rowIndex) => (
+                    {grid.map((row, rowIndex:number) => (
                         <tr key={rowIndex}>
-                            {row.map((cell, colIndex) => (
-                                <Cell colIndex rowIndex/>
+                            {row.map((cell, colIndex:number) => (
+                                
+                                <Cell  
+                                    rowIndex={rowIndex}
+                                    colIndex={colIndex}
+                                    updateGrid={updateGrid}
+                                    changedCells = {changedCells.includes(`${rowIndex},${colIndex}`)}
+                                />
                             ))}
                         </tr>
                     ))}

@@ -10,8 +10,8 @@ export const Simulation = () => {
 
     return (
         <div style={{backgroundColor:"black"}}>
-            <Board spreading/>
-            <CiPlay1 style={{fontSize:"50px", color:"white"}} onClick={() => setSpreading(true)}/>
+            <Board spreading={spreading}/>
+            <CiPlay1 style={{fontSize:"50px", color:"white", cursor:"pointer"}} onClick={() => setSpreading(true)}/>
         </div>
     )
 
