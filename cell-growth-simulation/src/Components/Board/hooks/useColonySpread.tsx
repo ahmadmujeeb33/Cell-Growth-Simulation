@@ -5,34 +5,30 @@ import React, { useEffect, useState } from 'react';
 type GridType = boolean[][];
 
 
-export const useColonySpread = (spreading: boolean, grid: GridType,
-    setGrid: React.Dispatch<React.SetStateAction<GridType>>, setChangedCells:React.Dispatch<React.SetStateAction<string[]>> ) => {
+export const useColonySpread = (spreading: boolean,setGrid: React.Dispatch<React.SetStateAction<GridType>>, setChangedCells:React.Dispatch<React.SetStateAction<Set<string>>> ) => {
 
            
-    let existingBacteriaCells: Set<string> = new Set();
+    const getExistingColony = (grid: boolean[][]) => {
 
-    const getExistingColony = () => {
-        
-        grid.forEach((row, rowIndex) => {
-            row.forEach((cell, colIndex) => {
-              if (cell) {
-                existingBacteriaCells.add(`${rowIndex},${colIndex}`);
-              }
-            });
+      let existingBacteriaCells: Set<string> = new Set();
+      grid.forEach((row, rowIndex) => {
+          row.forEach((cell, colIndex) => {
+            if (cell) {
+              existingBacteriaCells.add(`${rowIndex},${colIndex}`);
+            }
+          });
 
-        })
+      })
+
+      return existingBacteriaCells;
 
     }
 
-    const updateColony = () => {
+    const updateColony = ( grid: boolean[][]) => {
 
-        getExistingColony()
+        const existingBacteriaCells = getExistingColony(grid);
 
-        console.log("existingBacteriaCells", existingBacteriaCells)
-
-        console.log("existingBacteriaCells.has([rowIndex-1, colIndex-1]", existingBacteriaCells.has(`${0},${19}`))
-
-        const newChangedCells: string[] = [];
+        const newChangedCells = new Set<string>();
 
         const newGrid = grid.map((row, rowIndex) => {
             return row.map((cell, colIndex) => {               
@@ -42,57 +38,38 @@ export const useColonySpread = (spreading: boolean, grid: GridType,
                 existingBacteriaCells.has(`${rowIndex - 1},${colIndex}`) ||
                 existingBacteriaCells.has(`${rowIndex + 1},${colIndex }`)
               ) {
-                newChangedCells.push(`${rowIndex},${colIndex}`);
+                newChangedCells.add(`${rowIndex},${colIndex}`);
                 return true; 
               }
               return cell; 
             });
         });
         
+
         setChangedCells(newChangedCells)
-        setGrid(newGrid)
-    // }
 
-
-        // grid.forEach((row, rowIndex) => {
-        //     row.forEach((cell, colIndex) => {
-        //         if ( (existingBacteriaCells.has(`${rowIndex-1},${colIndex-1}`)) || 
-        //             ( existingBacteriaCells.has(`${rowIndex+1},${colIndex+1}`)  ||
-        //             (existingBacteriaCells.has(`${rowIndex},${colIndex-1}`)) ||
-        //             (existingBacteriaCells.has(`${rowIndex},${colIndex+1}`))
-        //             )) {
-        //                 console.log("in here")
-        //                 console.log("rowIndex", rowIndex)
-        //                 console.log("colIndex", colIndex)
-        //                 grid[rowIndex][colIndex] = true
-        //             }
-        //     });
-
-        // })
-
-        // console.log("gird line 55", grid)
-
-        // setGrid(grid)
-
-        // setGrid(prevGrid => 
-        //     prevGrid.map((row, rIdx) => 
-        //       row.map((cell, cIdx) => (rIdx === rowIndex && cIdx === colIndex ? !cell : cell))
-        //     )
-        // );
+        return newGrid
+    
     }
+
 
     useEffect(() =>{
 
-        if(spreading){
+      if(spreading){
+          
+          const interval = setInterval(() => {
+            setGrid(prevGrid =>  updateColony(prevGrid))
 
-            setInterval(() => {
+          }, 1000)
 
-                console.log("in line 90")
-                updateColony();
+          return () => clearInterval(interval);
+      }
+   }, [spreading])
 
-            }, 1000)
-        }
 
-    }, [spreading,grid])
+  
+
+    
+   
 }
 

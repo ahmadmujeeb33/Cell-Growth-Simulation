@@ -21,12 +21,17 @@ const Cell: React.FC<Cell> = ({rowIndex, colIndex, updateGrid, changedCells}) =>
         updateGrid(rIdx, cIdx)
     }
 
+    // console.log("in line 23")
+
 
 
     useEffect(() => {
+        console.log("in line 27")
         if(changedCells){
+            console.log("in like 31")
             setBacteria(true)
             updateGrid(rowIndex, colIndex)
+
         }
     
     }, [changedCells])
@@ -48,6 +53,11 @@ const Cell: React.FC<Cell> = ({rowIndex, colIndex, updateGrid, changedCells}) =>
 
 
 const MemoizedCell = React.memo(Cell, (prevProps, nextProps) => {
+
+    // console.log("prevProps.changedCells", prevProps.changedCells)
+    // console.log("nextProps.changedCells", nextProps.changedCells)
+
+
     return (
         prevProps.rowIndex === nextProps.rowIndex &&
         prevProps.colIndex === nextProps.colIndex &&
