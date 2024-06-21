@@ -13,6 +13,7 @@ import './style/index.css';
 
 interface Board {
     spreading: boolean;
+    clearGrid: boolean    
    
 }
 
@@ -24,11 +25,9 @@ const createInitalGrid = (size:number) => {
 }
 
 
-export const Board: React.FC<Board> = ({spreading}) => {
-
+export const Board: React.FC<Board> = ({spreading,clearGrid}) => {
 
     const size: number = 20;
-
 
     const [grid, setGrid] = useState(()=> createInitalGrid(size))
 
@@ -36,6 +35,21 @@ export const Board: React.FC<Board> = ({spreading}) => {
     const [changedCells, setChangedCells] = useState<Set<string>>(new Set());;
 
     useColonySpread(spreading,setGrid, setChangedCells);
+
+
+    useEffect(() => {
+
+        if(clearGrid){
+            setGrid(prevGrid => 
+                prevGrid.map((row, rIdx) => 
+                  row.map((cell, cIdx) => false)
+                )
+            );
+
+            setChangedCells(new Set())
+        }
+
+    },[clearGrid])
 
     const updateGrid = (rowIndex:number, colIndex:number) => {
 
@@ -59,6 +73,7 @@ export const Board: React.FC<Board> = ({spreading}) => {
                                     colIndex={colIndex}
                                     updateGrid={updateGrid}
                                     changedCells = {changedCells.has(`${rowIndex},${colIndex}`)}
+                                    clearGrid= {clearGrid}
                                 />
                             ))}
                         </tr>
