@@ -48,6 +48,20 @@ export const Board: React.FC<Board> = ({spreading,clearGrid, timeInterval}) => {
         );
     }
 
+    useEffect(() => {
+
+        if(clearGrid){
+            setGrid(prevGrid => 
+                prevGrid.map((row, rIdx) => 
+                  row.map((cell, cIdx) => false)
+                )
+            );
+
+            setChangedCells(new Set())
+        }
+
+    },[clearGrid])
+
     return (
         <div className="board-container">
             <table className="my-table">
