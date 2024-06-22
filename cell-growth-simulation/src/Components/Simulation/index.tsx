@@ -37,18 +37,28 @@ export const Simulation = () => {
 
     return (
         <div className = {"simulation-container"}>
+
             
             <Board spreading={spreading} clearGrid={clearGrid} timeInterval={timeInterval}/>
-            {
-                !spreading ? <CiPlay1 style={{fontSize:"50px", color:"white", cursor:"pointer"}} onClick={() => startSimulation()}/>:
-                <CiPause1 style={{fontSize:"50px", color:"white", cursor:"pointer"}} onClick={() => setSpreading(false)} />
-                
-            }
 
-            <GrPowerReset style={{fontSize:"50px", color:"white", cursor:"pointer"}}  onClick={() => resetSimulation()} /> 
-            {/* <div className={"input-container"}>
-                <BacterialSpreadInput updateInterval={updateInterval}/>
-            </div> */}
+            <div>
+                <>
+                    <BacterialSpreadInput updateInterval={updateInterval}/>
+                </>
+
+                <div style = {{paddingTop: "30px"}}>
+
+                    {
+                        !spreading ? <CiPlay1 style={{fontSize:"50px", color:"white", cursor:"pointer"}} onClick={() => startSimulation()}/>:
+                        <CiPause1 style={{fontSize:"50px", color:"white", cursor:"pointer"}} onClick={() => setSpreading(false)} />
+                        
+                    }
+
+                    <GrPowerReset style={{fontSize:"50px", color:"white", cursor:"pointer"}}  onClick={() => resetSimulation()} /> 
+                    
+                </div>
+
+            </div>
             
         </div>
     )

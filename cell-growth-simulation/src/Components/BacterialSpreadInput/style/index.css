@@ -1,0 +1,44 @@
+
+
+
+.container {
+    background-color: lightgray;
+    width: 30vw;
+    height: 30vh;
+    box-shadow: 10px 10px lightslategray;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 50%;
+    gap: 10px;
+}
+
+.input-container {
+    display: block;
+    text-align: center;
+    width: 100%;
+}
+
+.input {
+
+    border: 2px solid black;
+    width: 70%;
+    height: 5vh;
+    text-align: center;
+
+}
+
+.button-container {
+    text-align: center;
+}
+
+.button {
+    width: 50%;
+    background-color: lightsteelblue;
+    cursor: pointer;
+}
+
+.message-container {
+    text-align: center;
+}
+

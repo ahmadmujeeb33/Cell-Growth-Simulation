@@ -7,15 +7,21 @@
     background-color: black;
     min-height: 100vh;
 
-    /* display: grid;
-    grid-template-columns:  60% 40 */
+    display: grid;
+    grid-template-columns:  60% 40%;
+    gap: 50px;
+    padding-top: 30px;
 
     
 }
 
 
-.input-container {
-    background-color: blue;
+/* .input-container {
     height: 50vh; 
+} */
+
+input {
+
+
 }
 
