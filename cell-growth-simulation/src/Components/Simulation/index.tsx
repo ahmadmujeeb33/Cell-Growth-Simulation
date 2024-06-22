@@ -8,6 +8,7 @@ import { GrPowerReset } from "react-icons/gr";
 
 import {BacterialSpreadInput} from '../BacterialSpreadInput';
 
+import './style/index.css';
 
 
 export const Simulation = () => {
@@ -35,7 +36,8 @@ export const Simulation = () => {
 
 
     return (
-        <div style={{backgroundColor:"black"}}>
+        <div className = {"simulation-container"}>
+            
             <Board spreading={spreading} clearGrid={clearGrid} timeInterval={timeInterval}/>
             {
                 !spreading ? <CiPlay1 style={{fontSize:"50px", color:"white", cursor:"pointer"}} onClick={() => startSimulation()}/>:
@@ -43,9 +45,10 @@ export const Simulation = () => {
                 
             }
 
-            <GrPowerReset style={{fontSize:"50px", color:"white", cursor:"pointer"}}  onClick={() => resetSimulation()} />
-
-            <BacterialSpreadInput updateInterval={updateInterval}/>
+            <GrPowerReset style={{fontSize:"50px", color:"white", cursor:"pointer"}}  onClick={() => resetSimulation()} /> 
+            {/* <div className={"input-container"}>
+                <BacterialSpreadInput updateInterval={updateInterval}/>
+            </div> */}
             
         </div>
     )

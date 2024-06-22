@@ -1,65 +1,28 @@
 
 
-
 .cell {
-    width: 30px;
-    height: 30px;
     cursor: pointer;
+    /* text-align: center;  
+    vertical-align: middle;  */
+    
     
 }
 
 .icon-container {
     display: flex;
-    justify-content: center;
+    justify-content: center; 
 }
 
 
 
-.icon {
+
+.bacteria-hidden {
+    visibility: hidden;
+}
+
+
+.bacteria-visible {
+    visibility: visible;
     color: thistle;
-    font-size: 15px;
-    cursor: pointer;
 
 }
-
-@media screen and (max-width: 542px) {
-  
-
-    .icon {
-        font-size: 5px;
-    
-    }
-  
-   
-  } 
-
-/* @media screen and (max-height: 298px) {
-    .cell {
-        width: 10px;
-        height: 10px;
-
-    }
-
-    .icon {
-        font-size: 10px;
-    
-    }
-  
-  
-   
-} */
-
-
-@media screen and (max-height: 648px) {
-    .cell {
-        width: 15px !important;
-        height: 15px !important;
-
-    }
-  
-    .icon {
-        font-size: 10px !important;
-    
-    }
-   
-} 

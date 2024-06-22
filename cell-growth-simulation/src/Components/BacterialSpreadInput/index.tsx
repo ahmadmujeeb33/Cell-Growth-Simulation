@@ -13,8 +13,8 @@ export const BacterialSpreadInput: React.FC<BacterialSpreadInput> = ({ updateInt
 
     return (
         <>
-        <input onChange={(e) => setInput(e.target.value)} />
-        <button onClick={() => updateInterval(parseInt(input, 10))}>Time Interval</button>
+            <input placeholder="Set Interval" onChange={(e) => setInput(e.target.value)} />
+            <button onClick={() => updateInterval(parseInt(input, 10))}>Time Interval</button>
         </>
     );
 };

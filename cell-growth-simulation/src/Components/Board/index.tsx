@@ -28,7 +28,7 @@ const createInitalGrid = (size:number) => {
 
 export const Board: React.FC<Board> = ({spreading,clearGrid, timeInterval}) => {
 
-    const size: number = 20;
+    const size: number = 10;
 
     const [grid, setGrid] = useState(()=> createInitalGrid(size))
 
@@ -38,22 +38,8 @@ export const Board: React.FC<Board> = ({spreading,clearGrid, timeInterval}) => {
     useColonySpread(spreading,setGrid, setChangedCells, timeInterval);
 
 
-    useEffect(() => {
-
-        if(clearGrid){
-            setGrid(prevGrid => 
-                prevGrid.map((row, rIdx) => 
-                  row.map((cell, cIdx) => false)
-                )
-            );
-
-            setChangedCells(new Set())
-        }
-
-    },[clearGrid])
-
+  
     const updateGrid = (rowIndex:number, colIndex:number) => {
-
 
         setGrid(prevGrid => 
             prevGrid.map((row, rIdx) => 

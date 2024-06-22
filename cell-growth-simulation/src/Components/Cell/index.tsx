@@ -10,12 +10,14 @@ interface Cell {
     colIndex: number;
     updateGrid: (rowIndex: number, colIndex: number) => void;
     changedCells:boolean;
-    clearGrid:boolean
+    clearGrid:boolean;
 }
 
 const Cell: React.FC<Cell> = ({rowIndex, colIndex, updateGrid, changedCells, clearGrid}) =>  {
 
     const [bacteria, setBacteria] = useState(false)
+
+    console.log("bacteria", bacteria)
 
     const updateBacteria = (rIdx:number,cIdx:number) => {
         bacteria ? setBacteria(false): setBacteria(true)
@@ -51,8 +53,9 @@ const Cell: React.FC<Cell> = ({rowIndex, colIndex, updateGrid, changedCells, cle
             className="cell"
             onClick={() => updateBacteria(rowIndex,colIndex)}
         >
+           
             <div className="icon-container">
-                {bacteria ?  <FaBacterium className="icon" />  : null}
+                <FaBacterium className={` ${bacteria ? 'bacteria-visible' : 'bacteria-hidden'}`} />
             </div>
         </td>
 

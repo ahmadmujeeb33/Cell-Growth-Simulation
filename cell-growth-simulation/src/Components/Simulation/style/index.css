@@ -1,0 +1,21 @@
+
+
+
+
+.simulation-container {
+
+    background-color: black;
+    min-height: 100vh;
+
+    /* display: grid;
+    grid-template-columns:  60% 40 */
+
+    
+}
+
+
+.input-container {
+    background-color: blue;
+    height: 50vh; 
+}
+
