@@ -1,11 +1,13 @@
 
 
+import { time } from 'console';
 import React, { useEffect, useState } from 'react';
 
 type GridType = boolean[][];
 
 
-export const useColonySpread = (spreading: boolean,setGrid: React.Dispatch<React.SetStateAction<GridType>>, setChangedCells:React.Dispatch<React.SetStateAction<Set<string>>> ) => {
+export const useColonySpread = (spreading: boolean,setGrid: React.Dispatch<React.SetStateAction<GridType>>, 
+                               setChangedCells:React.Dispatch<React.SetStateAction<Set<string>>>,timeInterval: number ) => {
 
            
     const getExistingColony = (grid: boolean[][]) => {
@@ -60,7 +62,7 @@ export const useColonySpread = (spreading: boolean,setGrid: React.Dispatch<React
           const interval = setInterval(() => {
             setGrid(prevGrid =>  updateColony(prevGrid))
 
-          }, 1000)
+          }, timeInterval * 1000)
 
           return () => clearInterval(interval);
       }
