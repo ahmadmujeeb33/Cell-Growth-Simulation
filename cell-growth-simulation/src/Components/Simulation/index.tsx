@@ -44,9 +44,9 @@ export const Simulation = () => {
             <div>
                 <>
                     <BacterialSpreadInput updateInterval={updateInterval}/>
-                </>
+                </> 
 
-                <div style = {{paddingTop: "30px"}}>
+                 <div style = {{paddingTop: "30px"}}>
 
                     {
                         !spreading ? <CiPlay1 style={{fontSize:"50px", color:"white", cursor:"pointer"}} onClick={() => startSimulation()}/>:

@@ -7,8 +7,8 @@ td {
 .board-container {
     width: 60vw;
     height: 60vh;
-    overflow: hidden;
-    border: 1px solid #000;
+    overflow: scroll;
+    border: 1px solid white;
 }
 
 
@@ -18,6 +18,8 @@ td {
     height: 100%;
 }
 
-
+.board-container::-webkit-scrollbar {
+    display: none;
+}
 
   
