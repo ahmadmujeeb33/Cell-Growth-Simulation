@@ -7,18 +7,13 @@ import { Cell } from '../Cell';
 import './style/index.css';
 
 
-
-
-
-
 interface Board {
     spreading: boolean;
     clearGrid: boolean;
     timeInterval: number;    
+    resetSimulation: () => void;
    
 }
-
-
 
 const createInitalGrid = (size:number) => {
    return Array.from({ length: size }, () => Array.from({ length: size }, () => false));
@@ -26,19 +21,17 @@ const createInitalGrid = (size:number) => {
 }
 
 
-export const Board: React.FC<Board> = ({spreading,clearGrid, timeInterval}) => {
+export const Board: React.FC<Board> = ({spreading,clearGrid, timeInterval, resetSimulation}) => {
 
-    const size: number = 50;
+    const size: number = 20;
 
     const [grid, setGrid] = useState(()=> createInitalGrid(size))
-
 
     const [changedCells, setChangedCells] = useState<Set<string>>(new Set());
 
 
-    useColonySpread(spreading,setGrid, setChangedCells, timeInterval);
+    useColonySpread(spreading,setGrid, setChangedCells, timeInterval, resetSimulation);
 
-  
     const updateGrid = (rowIndex:number, colIndex:number) => {
 
         setGrid(prevGrid => 
@@ -75,6 +68,7 @@ export const Board: React.FC<Board> = ({spreading,clearGrid, timeInterval}) => {
                                     updateGrid={updateGrid}
                                     changedCells = {changedCells.has(`${rowIndex},${colIndex}`)}
                                     clearGrid= {clearGrid}
+                                    setChangedCells = {setChangedCells}
                                 />
                             ))}
                         </tr>

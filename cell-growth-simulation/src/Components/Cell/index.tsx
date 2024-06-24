@@ -11,32 +11,34 @@ interface Cell {
     updateGrid: (rowIndex: number, colIndex: number) => void;
     changedCells:boolean;
     clearGrid:boolean;
+    setChangedCells: React.Dispatch<React.SetStateAction<Set<string>>>
 }
 
-const Cell: React.FC<Cell> = ({rowIndex, colIndex, updateGrid, changedCells, clearGrid}) =>  {
+const Cell: React.FC<Cell> = ({rowIndex, colIndex, updateGrid, changedCells, clearGrid, setChangedCells}) =>  {
 
     const [bacteria, setBacteria] = useState(false)
 
-    console.log("bacteria", bacteria)
-
     const updateBacteria = (rIdx:number,cIdx:number) => {
-        bacteria ? setBacteria(false): setBacteria(true)
+        if(bacteria){
+            setBacteria(false)
+            setChangedCells(new Set())
+        }
+        else{
+            setBacteria(true)
+        }
         updateGrid(rIdx, cIdx)
+
     }
 
     useEffect(() => {
-    
-
+        
         if(changedCells){
+            
             setBacteria(true)
-            updateGrid(rowIndex, colIndex)
-
         }
        
     }, [changedCells])
 
-
-    
     useEffect(() => {
 
         if(clearGrid && bacteria){

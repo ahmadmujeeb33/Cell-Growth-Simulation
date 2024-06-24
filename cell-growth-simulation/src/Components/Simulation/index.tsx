@@ -17,6 +17,7 @@ export const Simulation = () => {
     const [clearGrid, setClearGrid] = useState(false)
     const [timeInterval, setTimeInterval] = useState(1)
 
+    
     const resetSimulation = () => {
         setSpreading(false);
         setClearGrid(true);
@@ -28,22 +29,25 @@ export const Simulation = () => {
     }
 
     const updateInterval = (time:number) => {
-
         setTimeInterval(time)
 
     } 
 
 
-
     return (
+
         <div className = {"simulation-container"}>
 
+            <div>
             
-            <Board spreading={spreading} clearGrid={clearGrid} timeInterval={timeInterval}/>
+                <Board spreading={spreading} clearGrid={clearGrid} timeInterval={timeInterval} resetSimulation = {resetSimulation}/>
+
+            </div>
 
             <div>
                 <>
-                    <BacterialSpreadInput updateInterval={updateInterval}/>
+                    <BacterialSpreadInput  updateInterval={updateInterval} spreading={spreading} />
+
                 </> 
 
                  <div style = {{paddingTop: "30px"}}>
@@ -57,9 +61,7 @@ export const Simulation = () => {
                     <GrPowerReset style={{fontSize:"50px", color:"white", cursor:"pointer"}}  onClick={() => resetSimulation()} /> 
                     
                 </div>
-
             </div>
-            
         </div>
     )
 
