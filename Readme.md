@@ -1,6 +1,6 @@
 ## Features
 
-The is a cell growth simulation project. The main features are when you click on a cell you have the ability to add a bacteria icon to each cell. If you click on the same cell again the bacteira icon will be removed. Once you have placed the inital bacteria you can click on the start button and this will start the simulation based on the timing provided in the input box(default is 1 second). While the simulation is running you have the ability to pause or restart it. You have the ability to update the interval time between cell growth in the input box but only while the simulation is not running. 
+The is a cell growth simulation project. The main features are when you click on a cell you have the ability to add a bacteria icon to each cell. If you click on the same cell again the bacteira icon will be removed. Once you have placed the inital bacteria you can click on the start button and this will start the simulation based on the timing provided in the input box(default is 1 second). While the simulation is running you have the ability to pause or restart it. You have the ability to update the interval time between cell growth in the input box but only while the simulation is not running. Also if you shrink the screen size you will have to scroll over on the grid to see the whole grid
 
 ## How to set up
 
