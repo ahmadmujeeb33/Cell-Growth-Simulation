@@ -21,7 +21,7 @@ export const BacterialSpreadInput: React.FC<BacterialSpreadInput> = ({ updateInt
 
         if(spreading){
             setSuccess(false)
-            setError("Reset simulation to update time")
+            setError("Pause or Reset simulation to update time")
         }
 
         else if(isNaN(num)){
@@ -63,7 +63,7 @@ export const BacterialSpreadInput: React.FC<BacterialSpreadInput> = ({ updateInt
                     {error === "Please enter a valid number" &&  <span style = {{"color": "red"}}>{error}</span>}
                 </div>
                 <div className = "message-container">
-                    {error === "Reset simulation to update time" &&  <span style = {{"color": "red"}}>{error}</span>}
+                    {error === "Pause or Reset simulation to update time" &&  <span style = {{"color": "red"}}>{error}</span>}
                 </div>
                 <div className = "message-container">
                     {success  && <span style = {{"color": "green"}}>Sucessfully updated time</span>}
